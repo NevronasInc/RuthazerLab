@@ -10,14 +10,9 @@ import os
 
 # Konstantinos Nasiotis
 
-folder_name = r"C:\Users\knasi\Consulting\NWB project\Ed\Jack"
-#folder_name = r"C:\Users\knasi\Consulting\NWB project\Ed\Marion\2014_05_13a"
 
-#folder_name = r"C:\Users\knasi\Consulting\NWB project\Ed\Vanessa\Calcium data\Exp_1727\Exp_1727"
-#folder_name = r"C:\Users\knasi\Consulting\NWB project\Ed\Post NR1 example\Post NR1 example\21715015b"
-#folder_name = r"C:\Users\knasi\Consulting\NWB project\Ed\2018-11-16\Fish AF"
-#folder_name = r"C:\Users\knasi\Consulting\NWB project\Ed\2018-05-28\Claudia"
-excel_fname = r"C:\Users\knasi\Consulting\NWB project\Ed\Ruthazer lab datasets.xlsx"
+folder_name = r"C:\NWB project\Ed\Jack"
+excel_fname = r"C:\NWB project\Ed\Ruthazer lab datasets.xlsx"
 
 
 # 1. Initiate nwb_file and add metadata
