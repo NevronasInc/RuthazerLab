@@ -5,6 +5,8 @@ import numpy as np
 import scipy
 import os
 
+# Konstantinos Nasiotis 2021
+
 
 def load_templates_optophysiology(stimuli_mat_file):
     # This function loads a mat file containing a structure with ALL the possible stimuli templates

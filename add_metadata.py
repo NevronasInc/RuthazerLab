@@ -1,4 +1,5 @@
 from pynwb import NWBFile
+from pynwb.file import Subject
 import numpy as np
 import pandas as pd
 import datetime
@@ -6,6 +7,8 @@ import pathlib
 import pyabf
 import glob
 import os
+
+# Konstantinos Nasiotis 2021
 
 
 def get_metadata_from_excel(identifier, excel_fname):
@@ -28,17 +31,27 @@ def get_metadata_from_excel(identifier, excel_fname):
     experimenter = entry_from_excel['Experimenter'].to_string(index=False)
     virus = entry_from_excel['Virus'].to_string(index=False)
     experiment_type = entry_from_excel['Experiment type'].to_string(index=False)  # Calcium Imaging, daily axon imaging, dynamic axon imaging, ephys
-    animal = entry_from_excel['Animal'].to_string(index=False)
+    species = entry_from_excel['Species'].to_string(index=False)
+    subject_id = entry_from_excel['Subject_id'].to_string(index=False)
+    sex = entry_from_excel['Sex'].to_string(index=False)
+    age = entry_from_excel['Age'].to_string(index=False)
+    subject_description = entry_from_excel['Subject Description'].to_string(index=False)
     experiment_description = entry_from_excel['Experiment Description'].to_string(index=False)
     general_notes = entry_from_excel['General Notes 1'].to_string(index=False) + ' | ' + \
                     entry_from_excel['General Notes 2'].to_string(index=False) + ' | ' + \
                     entry_from_excel['General Notes 3'].to_string(index=False)
+    if general_notes == ' |  | ':
+        general_notes = ''
     related_publications = entry_from_excel['Related Publications'].to_string(index=False)
 
     single_excel_entry = {'experimenter': experimenter,
                           'virus': virus,
                           'experiment_type': experiment_type,
-                          'animal': animal,
+                          'species': species,
+                          'subject_id': subject_id,
+                          'sex': sex,
+                          'age': age,
+                          'subject_description': subject_description,
                           'experiment_description': experiment_description,
                           'general_notes': general_notes,
                           'related_publications': related_publications
@@ -48,6 +61,11 @@ def get_metadata_from_excel(identifier, excel_fname):
 
 
 def add_to_nwb(single_excel_entry, start_time, identifier):
+    subject = Subject(subject_id=single_excel_entry['subject_id'],
+                      age=single_excel_entry['age'],
+                      description=single_excel_entry['subject_description'],
+                      species=single_excel_entry['species'],
+                      sex=single_excel_entry['sex'])
 
     nwbfile = NWBFile(
             session_description=single_excel_entry['experiment_type'],
@@ -57,6 +75,7 @@ def add_to_nwb(single_excel_entry, start_time, identifier):
             institution='McGill University',
             experiment_description=single_excel_entry['experiment_description'],
             identifier=identifier,
+            subject=subject,
             virus=single_excel_entry['virus'],
             related_publications=single_excel_entry['related_publications'],
             notes=single_excel_entry['general_notes']

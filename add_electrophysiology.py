@@ -6,6 +6,7 @@ import os
 
 # Konstantinos Nasiotis 2021
 
+
 def add_to_nwb(nwbfile, abf, iSweep):
 
     # The device and electrode are added only once

@@ -6,6 +6,8 @@ import psutil
 import h5py
 import os
 
+# Konstantinos Nasiotis 2021
+
 
 def get_times_thorlabs(folder_name):
     f = h5py.File(os.path.join(folder_name, 'Episode001.h5'), 'r')

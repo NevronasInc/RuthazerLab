@@ -5,6 +5,8 @@ import h5py
 import numpy as np
 import os
 
+# Konstantinos Nasiotis 2021
+
 
 def add_to_nwb(nwbfile, folder_name, processing_to_add, save_raw_files_in_nwb):
     identifier = os.path.basename(folder_name)  # Grab the folder name
