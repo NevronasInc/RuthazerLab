@@ -1,0 +1,11 @@
+h5py==3.3.0
+matplotlib==3.4.3
+numpy==1.21.0
+pandas==1.3.0
+Pillow==8.4.0
+psutil==5.8.0
+pyabf==2.3.3
+pynwb==2.0.0
+pynwb.egg==info
+PyQt5==5.15.5
+scipy==1.7.1
